@@ -11,5 +11,5 @@ seeds = YAML::load_file(seed_file).with_indifferent_access
 
 seeds['projects'].each do |pr|
   project = Project.create title: pr['title']
-  project.todos = Todo.create(pr['todos'])
+  project.todos = Todo.create pr['todos']
 end

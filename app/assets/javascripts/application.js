@@ -12,3 +12,22 @@
 //
 //= require rails-ujs
 //= require_tree .
+
+//= require jquery3
+//= require jquery_ujs
+
+$(document).ready(function() {
+  $('#show_form').click(function () {
+    $("#form_container").show();
+  });
+
+  $('#hide_link').click(function(event) {
+    event.preventDefault();
+    $("#form_container").hide();
+  });
+
+  $('#submit_link').click(function(event) {
+    event.preventDefault();
+    $("#form").submit();
+  });
+});

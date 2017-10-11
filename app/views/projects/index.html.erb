@@ -8,3 +8,21 @@
   <% end %>
 </ul>
 <% end %>
+
+<button id="show_form" type="button">+</button>
+
+<div id="form_container">
+  <h2>НОВАЯ ЗАДАЧА</h2>
+  <%= form_with scope: :todo, url: projects_create_url, id: "form", local: true do |form| %>
+  <p>
+    <%= form.select(:project_id, options_from_collection_for_select(Project.all, :id, :title)) %>
+  </p>
+  <p>
+    <%= form.text_field :text %>
+  </p>
+  <p>
+    <%= link_to "ОТМЕНА", "/", id: "hide_link" %>
+    <%= link_to "OK", "/", id: "submit_link" %>
+  </p>
+  <% end %>
+</div>
