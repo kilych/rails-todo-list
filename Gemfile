@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem "select2-rails"
 gem 'rubocop', '~> 0.50.0', require: false
 
 # Use Capistrano for deployment

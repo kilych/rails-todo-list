@@ -1,28 +1,43 @@
-<h1>Задачи</h1>
+<div id="header" class="col-12">
+  <h1>Задачи</h1>
+  <button id="show_btn" type="button" class="btn">+</button>
+</div>
 
-<% @projects.each do |project| %>
-<h2><%= project.title.upcase %></h2>
-<ul>
-  <% project.todos.each do |todo| %>
-  <li><%= todo.text %></li>
+<div id="main" class="col-12">
+  <% @projects.each do |project| %>
+  <div class="project_container col-12 col-md-6 col-lg-4">
+    <h2><%= project.title.upcase %></h2>
+    <hr>
+    <ul>
+      <% project.todos.each do |todo| %>
+      <li>
+        <label>
+          <% checked = false %>
+          <% checked = true if todo.isCompleted %>
+          <%= check_box_tag "todo_#{todo.project_id}_#{todo.id}", checked.to_s, checked %>
+          <p><%= todo.text %></p>
+        </label>
+      </li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
-</ul>
-<% end %>
-
-<button id="show_form" type="button">+</button>
+</div>
 
 <div id="form_container">
-  <h2>НОВАЯ ЗАДАЧА</h2>
-  <%= form_with scope: :todo, url: projects_create_url, id: "form", local: true do |form| %>
-  <p>
-    <%= form.select(:project_id, options_from_collection_for_select(Project.all, :id, :title)) %>
-  </p>
-  <p>
-    <%= form.text_field :text %>
-  </p>
-  <p>
-    <%= link_to "ОТМЕНА", "/", id: "hide_link" %>
-    <%= link_to "OK", "/", id: "submit_link" %>
-  </p>
-  <% end %>
+  <div id="form_container_inner" class="col-12 col-md-6 col-lg-4">
+    <h2>НОВАЯ ЗАДАЧА</h2>
+    <%= form_with scope: :todo, url: projects_create_url, id: "form", local: true do |form| %>
+    <p>
+      <%= form.text_field :text, placeholder: "Категория" %>
+    </p>
+    <p>
+      <%= form.select(:project_id, options_from_collection_for_select(Project.all, :id, :title)) %>
+    </p>
+    <p id="btns_container">
+      <%= link_to "ОТМЕНА", "/", id: "hide_link", class: "btn" %>
+      <%= link_to "OK", "/", id: "submit_link", class: "btn" %>
+    </p>
+    <% end %>
+  </div>
 </div>

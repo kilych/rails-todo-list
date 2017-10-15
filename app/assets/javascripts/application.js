@@ -11,14 +11,19 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require_tree .
 
 //= require jquery3
 //= require jquery_ujs
+//= require select2
+
+// https://github.com/fronteed/icheck/blob/1.x/icheck.min.js
+
+//= require_tree .
 
 $(document).ready(function() {
-  $('#show_form').click(function () {
-    $("#form_container").show();
+  $('#show_btn').click(function () {
+    // $("#form_container").show();
+    $("#form_container").css('display', 'flex');
   });
 
   $('#hide_link').click(function(event) {
@@ -29,5 +34,25 @@ $(document).ready(function() {
   $('#submit_link').click(function(event) {
     event.preventDefault();
     $("#form").submit();
+  });
+
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+  });
+
+  $('.icheckbox_square-blue.checked')
+    .closest('label').children('p').css('text-decoration', 'line-through');
+
+  $('input').on('ifChecked', function () {
+    $(this).closest('label').children('p').css('text-decoration', 'line-through');
+  });
+
+  $('input').on('ifUnchecked', function () {
+    $(this).closest('label').children('p').css('text-decoration', 'none');
+  });
+
+  $('select').select2({
+    minimumResultsForSearch: -1,
+    width: '100%',
   });
 });

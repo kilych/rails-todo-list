@@ -1,0 +1,193 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require select2
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+    font-family: "Open Sans Regular";
+    src:font-url("OpenSans-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans Light";
+    src:font-url("OpenSans-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans Semibold";
+    src:font-url("OpenSans-Semibold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* debugging */
+// * { outline: 1px solid red !important }
+
+* {
+    font-family: "Open Sans Light", sans-serif;
+}
+
+#header {
+    display: block;
+    text-align: center;
+    height: 54px;
+    font-family: "Open Sans Regular", sans-serif;
+    background-color: #2489C5;
+    color: white;
+}
+
+#header > h1 {
+    display: inline-block;
+    margin: auto;
+    vertical-align: middle;
+    line-height: 54px;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+}
+
+#show_btn {
+    position: absolute;
+    right: 0;
+    margin: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 54px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 54px;
+    font-size: 27px;
+    background-color: #2489C5;
+    color: white;
+    cursor: pointer;
+}
+
+h2 {
+    margin: 10px 0;
+    font-family: "Open Sans Semibold", sans-serif;
+    font-size: 11px;
+}
+
+#main {
+    padding: 20px;
+}
+
+.project_container {
+    margin: 10px;
+    padding: 5px 0;
+    background-color: white;
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.project_container > h2 {
+    padding-left: 15px;
+}
+
+hr {
+    margin: 5px 0;
+}
+
+ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    list-style: none;
+}
+
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li > label > p {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#form_container {
+    display: none;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#form_container_inner {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+}
+
+#form > p {
+    width: 100%;
+    margin: 10px 0 0 0;
+    line-height: 33px;
+    font-size: 11px;
+}
+
+#form > p > select, span, input {
+    width: 100%;
+}
+
+#btns_container {
+    position: relative;
+    height: 33px;
+}
+
+#hide_link, #submit_link {
+    position: absolute;
+    width: 49%;
+    font-family: "Open Sans Semibold";
+    color: white;
+}
+
+#hide_link {
+    left: 0;
+    background-color: grey;
+}
+
+#submit_link {
+    right: 0;
+    background-color: #2489C5;
+}
+
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+    height: 40px !important;
+    span {
+        line-height: 40px !important;
+        text-align: left;
+    }
+}
+
+.select2-selection {
+    border-radius: 0 !important;
+}
