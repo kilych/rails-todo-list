@@ -36,19 +36,32 @@ $(document).ready(function() {
     $("#form").submit();
   });
 
-  $('input').iCheck({
+  $('input[type="checkbox"]').iCheck({
     checkboxClass: 'icheckbox_square-blue',
   });
 
   $('.icheckbox_square-blue.checked')
-    .closest('label').children('p').css('text-decoration', 'line-through');
+    .closest('label').children('form').children('button').children('p')
+    .css('text-decoration', 'line-through');
 
-  $('input').on('ifChecked', function () {
-    $(this).closest('label').children('p').css('text-decoration', 'line-through');
+  $('input[type="checkbox"]').on('ifChecked', function () {
+    $(this)
+      .closest('label').children('form').children('button').children('p')
+      .css('text-decoration', 'line-through');
   });
 
-  $('input').on('ifUnchecked', function () {
-    $(this).closest('label').children('p').css('text-decoration', 'none');
+  $('input[type="checkbox"]').on('ifUnchecked', function () {
+    $(this)
+      .closest('label').children('form').children('button').children('p')
+      .css('text-decoration', 'none');
+  });
+
+  // alert($('li > label > form > button').length);
+  // $('li > label > form > button').off();
+  // $('li > label > form > button').attr('enabled', 'enabled');
+  $('li > label > form > button').click(function(event) {
+    event.preventDefault();
+    $(this).closest('form').submit();
   });
 
   $('select').select2({

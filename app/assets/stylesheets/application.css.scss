@@ -121,7 +121,17 @@ li {
     margin-bottom: 10px;
 }
 
-li > label > p {
+li > label > form > button {
+    background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+li > label > form > button > p {
     display: inline-block;
     margin-left: 20px;
 }

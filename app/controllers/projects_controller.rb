@@ -4,6 +4,13 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    if params.include? :todo
+      @todo = Todo.find params[:todo][:id]
+      @todo.isCompleted = !@todo.isCompleted
+      @todo.save
+    end
+
+    redirect_to '/'
   end
 
   def create
@@ -14,6 +21,6 @@ class ProjectsController < ApplicationController
       @project.todos << @todo
     end
 
-    redirect_to '/' # bad
+    redirect_to '/'             # ???
   end
 end

@@ -9,13 +9,18 @@
     <h2><%= project.title.upcase %></h2>
     <hr>
     <ul>
-      <% project.todos.each do |todo| %>
+      <% project.todos.sort { |a, b| a.id <=> b.id } .each do |todo| %>
       <li>
         <label>
+          <%= form_with scope: :todo, url: projects_update_url, id: "todo_form_#{todo.id}", local: true do |form| %>
+          <%= hidden_field :todo, :id, value: todo.id %>
           <% checked = false %>
           <% checked = true if todo.isCompleted %>
-          <%= check_box_tag "todo_#{todo.project_id}_#{todo.id}", checked.to_s, checked %>
-          <p><%= todo.text %></p>
+          <button type="submit">
+            <%= check_box_tag "todo[isCompleted]", checked.to_s, checked %>
+            <p><%= todo.text %></p>
+          </button>
+          <% end %>
         </label>
       </li>
       <% end %>
@@ -29,7 +34,7 @@
     <h2>НОВАЯ ЗАДАЧА</h2>
     <%= form_with scope: :todo, url: projects_create_url, id: "form", local: true do |form| %>
     <p>
-      <%= form.text_field :text, placeholder: "Категория" %>
+      <%= form.text_field :text, placeholder: "Название задачи" %>
     </p>
     <p>
       <%= form.select(:project_id, options_from_collection_for_select(Project.all, :id, :title)) %>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'projects/update'
 
+  post 'projects/update'
+
   get 'projects/create'
 
   post 'projects/create'
