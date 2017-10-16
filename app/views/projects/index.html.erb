@@ -6,7 +6,7 @@
 <div id="main" class="col-12">
   <% @projects.each do |project| %>
   <div class="project_container col-12 col-md-6 col-lg-4">
-    <h2><%= project.title.upcase %></h2>
+    <h2><%= project.title.mb_chars.upcase.wrapped_string %></h2>
     <hr>
     <ul>
       <% project.todos.sort { |a, b| a.id <=> b.id } .each do |todo| %>
