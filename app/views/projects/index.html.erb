@@ -18,6 +18,7 @@
               <%= hidden_field :todo, :id, value: todo.id %>
               <% checked = false %>
               <% checked = true if todo.isCompleted %>
+              <!-- in Firefox (v55.0.3) button covers checkbox, in Chromium (v61.0.3163.100) doesn't -->
               <button type="submit">
                 <%= check_box_tag "todo[isCompleted]", checked.to_s, checked %>
                 <p><%= todo.text %></p>
