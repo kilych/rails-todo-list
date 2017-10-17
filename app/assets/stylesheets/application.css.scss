@@ -16,6 +16,9 @@
  *= require_self
  */
 
+/* debugging */
+// * { outline: 1px solid red !important }
+
 @font-face {
     font-family: "Open Sans Regular";
     src:font-url("OpenSans-Regular.ttf") format("truetype");
@@ -36,9 +39,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-/* debugging */
-// * { outline: 1px solid red !important }
 
 * {
     font-family: "Open Sans Light", sans-serif;
@@ -89,12 +89,15 @@ h2 {
     font-size: 11px;
 }
 
-#main {
-    padding: 20px;
+// #main {
+//     padding: 20px;
+// }
+
+.project_container_outer {
+    padding: 15px;
 }
 
 .project_container {
-    margin: 10px;
     padding: 5px 0;
     background-color: white;
     -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
@@ -136,7 +139,7 @@ li > label > form > button > p {
     margin-left: 20px;
 }
 
-#form_container {
+#form_container_outer {
     display: none;
     visibility: visible;
     justify-content: center;
@@ -149,11 +152,16 @@ li > label > form > button > p {
     background-color: rgba(0,0,0,0.5);
 }
 
+#form_container {
+    display: block;
+    padding: 15px;
+}
+
 #form_container_inner {
     display: block;
     text-align: center;
     padding: 10px;
-    margin: 10px;
+    // margin: 10px;
     background-color: white;
 }
 

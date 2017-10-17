@@ -1,48 +1,54 @@
-<div id="header" class="col-12">
-  <h1>Задачи</h1>
-  <button id="show_btn" type="button" class="btn">+</button>
-</div>
-
-<div id="main" class="col-12">
-  <% @projects.each do |project| %>
-  <div class="project_container col-12 col-md-6 col-lg-4">
-    <h2><%= project.title.mb_chars.upcase.wrapped_string %></h2>
-    <hr>
-    <ul>
-      <% project.todos.sort { |a, b| a.id <=> b.id } .each do |todo| %>
-      <li>
-        <label>
-          <%= form_with scope: :todo, url: projects_update_url, id: "todo_form_#{todo.id}", local: true do |form| %>
-          <%= hidden_field :todo, :id, value: todo.id %>
-          <% checked = false %>
-          <% checked = true if todo.isCompleted %>
-          <button type="submit">
-            <%= check_box_tag "todo[isCompleted]", checked.to_s, checked %>
-            <p><%= todo.text %></p>
-          </button>
-          <% end %>
-        </label>
-      </li>
-      <% end %>
-    </ul>
+<div class="container-fluid">
+  <div id="header" class="row">
+    <h1>Задачи</h1>
+    <button id="show_btn" type="button" class="btn">+</button>
   </div>
-  <% end %>
+
+  <div id="main" class="row">
+    <% @projects.each do |project| %>
+    <div class="project_container_outer col-12 col-md-6 col-lg-4">
+      <div class="project_container">
+        <h2><%= project.title.mb_chars.upcase.wrapped_string %></h2>
+        <hr>
+        <ul>
+          <% project.todos.sort { |a, b| a.id <=> b.id } .each do |todo| %>
+          <li>
+            <label>
+              <%= form_with scope: :todo, url: projects_update_url, id: "todo_form_#{todo.id}", local: true do |form| %>
+              <%= hidden_field :todo, :id, value: todo.id %>
+              <% checked = false %>
+              <% checked = true if todo.isCompleted %>
+              <button type="submit">
+                <%= check_box_tag "todo[isCompleted]", checked.to_s, checked %>
+                <p><%= todo.text %></p>
+              </button>
+              <% end %>
+            </label>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
-<div id="form_container">
-  <div id="form_container_inner" class="col-12 col-md-6 col-lg-4">
-    <h2>НОВАЯ ЗАДАЧА</h2>
-    <%= form_with scope: :todo, url: projects_create_url, id: "form", local: true do |form| %>
-    <p>
-      <%= form.text_field :text, placeholder: "Название задачи" %>
-    </p>
-    <p>
-      <%= form.select(:project_id, options_from_collection_for_select(Project.all, :id, :title)) %>
-    </p>
-    <p id="btns_container">
-      <%= link_to "ОТМЕНА", "/", id: "hide_link", class: "btn" %>
-      <%= link_to "OK", "/", id: "submit_link", class: "btn" %>
-    </p>
-    <% end %>
+<div id="form_container_outer">
+  <div id="form_container" class="col-12 col-md-6 col-lg-4">
+    <div id="form_container_inner">
+      <h2>НОВАЯ ЗАДАЧА</h2>
+      <%= form_with scope: :todo, url: projects_create_url, id: "form", local: true do |form| %>
+      <p>
+        <%= form.text_field :text, placeholder: "Название задачи" %>
+      </p>
+      <p>
+        <%= form.select(:project_id, options_from_collection_for_select(Project.all, :id, :title)) %>
+      </p>
+      <p id="btns_container">
+        <%= link_to "ОТМЕНА", "/", id: "hide_link", class: "btn" %>
+        <%= link_to "OK", "/", id: "submit_link", class: "btn" %>
+      </p>
+      <% end %>
+    </div>
   </div>
 </div>

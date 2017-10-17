@@ -23,12 +23,12 @@
 $(document).ready(function() {
   $('#show_btn').click(function () {
     // $("#form_container").show();
-    $("#form_container").css('display', 'flex');
+    $("#form_container_outer").css('display', 'flex');
   });
 
   $('#hide_link').click(function(event) {
     event.preventDefault();
-    $("#form_container").hide();
+    $("#form_container_outer").hide();
   });
 
   $('#submit_link').click(function(event) {
