@@ -16,8 +16,7 @@
 //= require jquery_ujs
 //= require select2
 
-// https://github.com/fronteed/icheck/blob/1.x/icheck.min.js
-
+// ./vendor: https://github.com/fronteed/icheck/blob/1.x/icheck.min.js
 //= require_tree .
 
 $(document).ready(function() {
@@ -56,13 +55,17 @@ $(document).ready(function() {
       .css('text-decoration', 'none');
   });
 
+  $('input[type="checkbox"]').on('ifToggled', function () {
+    $(this).closest('form').submit();
+  });
+
   // alert($('li > label > form > button').length);
   // $('li > label > form > button').off();
   // $('li > label > form > button').attr('enabled', 'enabled');
-  $('li > label > form > button').click(function(event) {
-    event.preventDefault();
-    $(this).closest('form').submit();
-  });
+  // $('li > label > form > button').click(function(event) {
+  //   event.preventDefault();
+  //   $(this).closest('form').submit();
+  // });
 
   $('select').select2({
     minimumResultsForSearch: -1,
